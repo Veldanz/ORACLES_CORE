@@ -2,9 +2,9 @@
     "section1": {
         "files": [
             {
-                "url": "assets/LandingBG.jpg",
+                "url": "assets/JAN_BG.jpeg",
                 "type": "image",
-                "key": "LandingBG"
+                "key": "JAN_BG"
             },
             {
                 "url": "assets/Vel1.png",
