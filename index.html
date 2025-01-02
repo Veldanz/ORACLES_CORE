@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: radial-gradient(circle, #0d0d2b, #1a1a3f);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        @keyframes starryBackground {
+            0% { background-position: 0 0; }
+            100% { background-position: -1000px -1000px; }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1000x1000') repeat;
+            animation: starryBackground 30s linear infinite;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-shadow: 0 0 20px #00aaff;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 1rem 0 2rem;
+        }
+
+        .hero button {
+            padding: 0.75rem 1.5rem;
+            background: #00aaff;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            text-shadow: 0 0 10px #00aaff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #00aaff;
+        }
+
+        /* Character Section */
+        .characters {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .characters h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px #00ffcc;
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .character-card {
+            background: rgba(26, 26, 63, 0.8);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px #00ffcc;
+        }
+
+        .character-card img {
+            max-width: 100%;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 2px solid #00aaff;
+        }
+
+        .character-card h3 {
+            margin: 0.5rem 0;
+            text-shadow: 0 0 10px #00aaff;
+        }
+
+        .character-card p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Footer */
+        footer {
+            padding: 1rem 2rem;
+            text-align: center;
+            background: #0d0d2b;
+            color: #888;
+        }
+
+        footer a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to My Galaxy</h1>
+            <p>Embark on a cosmic journey through my portfolio and projects.</p>
+            <button>Explore the Universe</button>
+        </div>
+    </section>
+
+    <!-- Character Section -->
+    <section class="characters">
+        <h2>Cosmic Highlights</h2>
+        <div class="character-grid">
+            <div class="character-card">
+                <img src="https://via.placeholder.com/150" alt="Project 1">
+                <h3>Stellar Project 1</h3>
+                <p>Discover the details of this groundbreaking work.</p>
+            </div>
+            <div class="character-card">
+                <img src="https://via.placeholder.com/150" alt="Project 2">
+                <h3>Galactic Project 2</h3>
+                <p>A glimpse into a universe of possibilities.</p>
+            </div>
+            <div class="character-card">
+                <img src="https://via.placeholder.com/150" alt="Project 3">
+                <h3>Nebula Project 3</h3>
+                <p>Shaping the stars with creativity and innovation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Your Name. Crafted under the stars. <a href="#">Contact Me</a></p>
+    </footer>
+
+</body>
+</html>
