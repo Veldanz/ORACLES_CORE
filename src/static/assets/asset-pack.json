@@ -2,9 +2,14 @@
     "section1": {
         "files": [
             {
-                "url": "assets/Landing_BG.jpg",
+                "url": "assets/LandingBG.jpg",
                 "type": "image",
-                "key": "Landing_BG"
+                "key": "LandingBG"
+            },
+            {
+                "url": "assets/Vel1.png",
+                "type": "image",
+                "key": "Vel1"
             }
         ]
     }
