@@ -13,14 +13,12 @@
             overflow-x: hidden;
         }
 
-        @keyframes sonar {
-            0% {
-                transform: scale(0.5);
-                opacity: 0.5;
+        @keyframes soundWave {
+            0%, 100% {
+                transform: scaleY(1);
             }
-            100% {
-                transform: scale(2.5);
-                opacity: 0;
+            50% {
+                transform: scaleY(2);
             }
         }
 
@@ -35,17 +33,37 @@
             overflow: hidden;
         }
 
-        .hero:before {
-            content: '';
+        .sound-wave {
+            display: flex;
+            gap: 10px;
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(0, 170, 255, 0.5) 0%, rgba(0, 170, 255, 0) 70%);
-            border-radius: 50%;
             transform: translate(-50%, -50%);
-            animation: sonar 2s infinite;
+            z-index: 1;
+        }
+
+        .sound-wave div {
+            width: 10px;
+            height: 100px;
+            background: rgba(0, 170, 255, 0.7);
+            animation: soundWave 2s infinite;
+        }
+
+        .sound-wave div:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .sound-wave div:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .sound-wave div:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .sound-wave div:nth-child(5) {
+            animation-delay: 0.8s;
         }
 
         .hero-content {
@@ -85,6 +103,20 @@
         .hero button:hover {
             transform: scale(1.1);
             box-shadow: 0 0 20px #00aaff;
+        }
+
+        /* Clock and Calendar */
+        .calendar, .clock {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #00aaff;
+            text-shadow: 0 0 10px #00aaff;
+        }
+
+        .clock {
+            top: 40px; /* Adjust this value to position the clock below the calendar */
         }
 
         /* Character Section */
@@ -159,8 +191,21 @@
 </head>
 <body>
 
+    <!-- Calendar -->
+    <div class="calendar" id="calendar"></div>
+
+    <!-- Clock -->
+    <div class="clock" id="clock"></div>
+
     <!-- Hero Section -->
     <section class="hero" id="hero">
+        <div class="sound-wave">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <div class="hero-content">
             <img id="logo" alt="Logo" style="max-width: 150px; margin-bottom: 1rem;">
             <h1>Veldanz: Velcome</h1>
@@ -197,6 +242,27 @@
     </footer>
 
     <script>
+        function updateClock() {
+            const clock = document.getElementById('clock');
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            clock.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        function updateCalendar() {
+            const calendar = document.getElementById('calendar');
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString(undefined, options);
+            calendar.textContent = dateString;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+        updateCalendar();
+
         fetch('src/static/assets/asset-pack.json')
             .then(response => response.json())
             .then(data => {
