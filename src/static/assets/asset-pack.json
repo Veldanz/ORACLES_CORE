@@ -2,9 +2,9 @@
     "section1": {
         "files": [
             {
-                "url": "assets/JAN_BG.jpeg",
+                "url": "assets/BG_RealSpace.jpg",
                 "type": "image",
-                "key": "JAN_BG"
+                "key": "Header_BG"
             },
             {
                 "url": "assets/Vel1.png",
