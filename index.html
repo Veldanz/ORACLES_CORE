@@ -3,231 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Rubik Glitch' rel='stylesheet'>
     <title>0RACLE C0R3</title>
     <style>
-        body {
+        * {
             margin: 0;
-            font-family: 'Helvetica', serif;
-            background: radial-gradient(circle, #0d0d2b, #1a1a3f);
-            color: #fff;
-            overflow-x: hidden;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle, rgba(0, 170, 255, 0.5) 0%, rgba(0, 170, 255, 0) 70%);
-            position: relative;
+        body {
+            font-family: sans-serif;
+            background-color: #F5F5F5;
+            color: #3D3D3D;
+        }
+
+        .section-1 {
+            font-family: 'Rubik Glitch', sans-serif;
+            padding: 20px;
+            background-color: #FFFAEC;
+            text-align: center;
             overflow: hidden;
         }
 
-        .hero-content {
-            z-index: 2;
+        .section-2 {
+            padding: 20px;
+            background-color: #97F1F8;
             text-align: center;
-            animation: fadeIn 2s ease-in-out;
+            overflow: hidden;
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .main-logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin: 0;
-            text-shadow: 0 0 20px #00aaff;
+        .logo-scroll-wrapper {
+            position: relative;
+            padding: 20px 0;
+            background: #578E7E;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin: 1rem 0 2rem;
+        .logo-scroll {
+            display: flex;
+            gap: 100px;
+            position: relative;
         }
 
-        .hero button {
-            padding: 0.75rem 1.5rem;
-            background: none;
-            border: none;
-            color: #00aaff;
-            font-size: 3.5rem;
+        .bounce-right {
+            animation: bounceHorizontal 10s linear infinite alternate;
+        }
+
+        .bounce-left {
+            animation: bounceHorizontal 10s linear infinite alternate-reverse;
+        }
+
+        .logo-item {
+            width: 100px;
+            height: 100px;
+            background: #808080;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #fff;
+            transition: all 0.3s ease;
             cursor: pointer;
-            border-radius: 4px;
-            text-shadow: 0 0 10px #00aaff;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: bounce 2s infinite;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero button:hover {
-            transform: scale(1.1);
-            box-shadow: none;
+        .logo-item:hover {
+            transform: scale(1.2);
+            background: #f0f0f0;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 2;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
+        @keyframes bounceHorizontal {
+            0% {
+                transform: translateX(-10%);
             }
-            40% {
-                transform: translateY(-15px);
-            }
-            60% {
-                transform: translateY(-5px);
+            100% {
+                transform: translateX(calc(-100% + 100vw));
             }
         }
 
-        /* Clock and Calendar */
-        .calendar, .clock {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            color: #ffffff;
-            text-shadow: 0 0 10px #00aaff;
-        }
-
-        .clock {
-            top: 40px; /* Adjust this value to position the clock below the calendar */
-        }
-
-        /* Character Section */
-        .characters {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .characters h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 0 0 15px #00ffcc;
-        }
-
-        .character-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .character-card {
-            background: rgba(26, 26, 63, 0.8);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .character-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 20px #00ffcc;
-        }
-
-        .character-card img {
-            max-width: 100%;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            border: 2px solid #00aaff;
-        }
-
-        .character-card h3 {
-            margin: 0.5rem 0;
-            text-shadow: 0 0 10px #00aaff;
-        }
-
-        .character-card p {
-            font-size: 0.9rem;
-            color: #ccc;
-        }
-
-        /* Footer */
-        footer {
-            padding: 1rem 2rem;
-            text-align: center;
-            background: #0d0d2b;
-            color: #888;
-        }
-
-        footer a {
-            color: #00aaff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
+        .section-2, .section-3 {
+            padding: 20px;
+            min-height: 200px;
+            border: 2px dashed #ccc;
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <link id="favicon" rel="icon" href="https://via.placeholder.com/32" type="image/png">
 </head>
 <body>
-
-    <!-- Calendar -->
-    <div class="calendar" id="calendar"></div>
-
-    <!-- Clock -->
-    <div class="clock" id="clock"></div>
-
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <section class="section-1">
         <div class="hero-content">
             <img id="logo" alt="Logo" style="max-width: 150px; margin-bottom: 1rem;">
             <h1>ORACLE ENGINE</h1>
             <h1>SECTION 8</h1>
-            <p>Welcome and feel free to visit all sections.<p>
-            <button>&#x2193;</button> <!-- Arrow pointing down -->
+        </div>
+        
+        <div class="logo-scroll-wrapper">
+            <div class="logo-scroll bounce-right">
+                <div class="logo-item">Logo 1</div>
+                <div class="logo-item">Logo 2</div>
+                <div class="logo-item">Logo 3</div>
+                <div class="logo-item">Logo 4</div>
+                <div class="logo-item">Logo 5</div>
+                <div class="logo-item">Logo 6</div>
+                <div class="logo-item">Logo 7</div>
+                <div class="logo-item">Logo 8</div>
+            </div>
+        </div>
+
+        <div class="logo-scroll-wrapper">
+            <div class="logo-scroll bounce-left">
+                <div class="logo-item">Logo 9</div>
+                <div class="logo-item">Logo 10</div>
+                <div class="logo-item">Logo 11</div>
+                <div class="logo-item">Logo 12</div>
+                <div class="logo-item">Logo 13</div>
+                <div class="logo-item">Logo 14</div>
+                <div class="logo-item">Logo 15</div>
+                <div class="logo-item">Logo 16</div>
+            </div>
         </div>
     </section>
 
-    <!-- Character Section -->
-    <section class="characters">
-        <h2>PORTFOLIO</h2>
-        <div class="character-grid">
-            <div class="character-card">
-                <img src="https://via.placeholder.com/150" alt="Project 1">
-                <h3>Stellar Project 1</h3>
-                <p>Discover the details of this groundbreaking work.</p>
-            </div>
-            <div class="character-card">
-                <img src="https://via.placeholder.com/150" alt="Project 2">
-                <h3>Galactic Project 2</h3>
-                <p>A glimpse into a universe of possibilities.</p>
-            </div>
-            <div class="character-card">
-                <img src="https://via.placeholder.com/150" alt="Project 3">
-                <h3>Nebula Project 3</h3>
-                <p>Shaping the stars with creativity and innovation.</p>
-            </div>
-        </div>
+    <section class="section-2">
+        Section 2 content will go here
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Your Name. Crafted under the stars. <a href="#">Contact Me</a></p>
-    </footer>
+    <section class="section-3">
+        Section 3 content will go here
+    </section>
 
     <script>
-        function updateClock() {
-            const clock = document.getElementById('clock');
-            const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const seconds = now.getSeconds().toString().padStart(2, '0');
-            clock.textContent = `${hours}:${minutes}:${seconds}`;
-        }
-
-        function updateCalendar() {
-            const calendar = document.getElementById('calendar');
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const dateString = now.toLocaleDateString(undefined, options);
-            calendar.textContent = dateString;
-        }
-
-        setInterval(updateClock, 1000);
-        updateClock();
-        updateCalendar();
-
         fetch('src/static/assets/asset-pack.json')
             .then(response => response.json())
             .then(data => {
