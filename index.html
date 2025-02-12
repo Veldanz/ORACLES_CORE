@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://fonts.googleapis.com/css?family=Rubik Glitch' rel='stylesheet'>
+    <meta name="description" content="Oracle Engine Section 8">
     <title>0RACLE C0R3</title>
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Rubik+Glitch" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik+Glitch">
+    
     <style>
+        :root {
+            --primary-color: #5C7261;
+            --secondary-color: #97F1F8;
+            --text-color: #3D3D3D;
+            --background-color: #F5F5F5;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,34 +25,35 @@
         }
 
         body {
-            font-family: sans-serif;
-            background-color: #F5F5F5;
-            color: #3D3D3D;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
         }
 
         .section-1 {
-            font-family: 'Rubik Glitch', sans-serif;
-            padding: 0px;
+            font-family: 'Rubik Glitch', system-ui;
             background-color: #FFFAEC;
             text-align: center;
             overflow: hidden;
-            text-shadow: 1px 4px 4px rgba(68, 255, 0, 0.25), 
-                         4px 4px 4px rgba(255, 0, 4, 0.25), 
-                         2px 4px 4px rgba(255, 0, 217, 0.25);
+            text-shadow: 
+                1px 4px 4px rgba(68, 255, 0, 0.25),
+                4px 4px 4px rgba(255, 0, 4, 0.25),
+                2px 4px 4px rgba(255, 0, 217, 0.25);
         }
 
         .section-2 {
             position: relative;
             padding: 20px;
-            background-color: #97F1F8;
+            background-color: var(--secondary-color);
             text-align: center;
             min-height: 500px;
+            /* Removed grid layout to maintain exact positioning */
         }
 
         .project-card {
             width: 150px;
             height: 175px;
-            background: #5C7261;
+            background: var(--primary-color);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -48,29 +61,63 @@
             color: white;
             font-size: 18px;
             font-weight: bold;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--card-shadow);
             position: absolute;
             transition: transform 0.3s ease;
+            will-change: transform;
         }
 
         .project-card:hover {
             transform: scale(1.1);
         }
 
-        /* Positioning project cards like leaves */
-        .project-card:nth-child(1) { top: 20%; left: 10%; rotate: -20deg;}
-        .project-card:nth-child(2) { top: 50%; left: 30%; rotate: 20deg;}
-        .project-card:nth-child(3) { top: 20%; right: 35%; rotate: 2.2deg;}
-        .project-card:nth-child(4) { bottom: 30%; right: 10%; rotate: -7deg;}
+        /* Exact positioning for cards */
+        .project-card:nth-child(1) { 
+            top: 20%; 
+            left: 10%; 
+            transform: rotate(-20deg);
+        }
+        .project-card:nth-child(2) { 
+            top: 50%; 
+            left: 30%; 
+            transform: rotate(20deg);
+        }
+        .project-card:nth-child(3) { 
+            top: 20%; 
+            right: 35%; 
+            transform: rotate(2.2deg);
+        }
+        .project-card:nth-child(4) { 
+            bottom: 30%; 
+            right: 10%; 
+            transform: rotate(-7deg);
+        }
 
+        /* Hover effect while maintaining rotation */
+        .project-card:nth-child(1):hover { transform: scale(1.1) rotate(-20deg); }
+        .project-card:nth-child(2):hover { transform: scale(1.1) rotate(20deg); }
+        .project-card:nth-child(3):hover { transform: scale(1.1) rotate(2.2deg); }
+        .project-card:nth-child(4):hover { transform: scale(1.1) rotate(-7deg); }
+
+        /* Exact leaf positioning */
         .leaf {
             position: absolute;
             width: 80px;
+            height: 80px;
         }
 
-        .leaf-1 { bottom: 20%; left: 15%; }
-        .leaf-2 { top: 20%; left: 40%; }
-        .leaf-3 { top: 5%; right: 10%; }
+        .leaf-1 { 
+            bottom: 20%; 
+            left: 15%; 
+        }
+        .leaf-2 { 
+            top: 20%; 
+            left: 40%; 
+        }
+        .leaf-3 { 
+            top: 5%; 
+            right: 10%; 
+        }
 
         .logo-scroll-wrapper {
             position: relative;
@@ -78,21 +125,17 @@
             background: #578E7E;
             overflow: hidden;
             margin: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--card-shadow);
         }
 
         .logo-scroll {
             display: flex;
             gap: 100px;
-            position: relative;
+            animation: var(--scroll-direction, bounceHorizontal) 3s linear infinite alternate;
         }
 
-        .bounce-right {
-            animation: bounceHorizontal 3s linear infinite alternate;
-        }
-
-        .bounce-left {
-            animation: bounceHorizontal 3s linear infinite alternate-reverse;
+        .logo-scroll.reverse {
+            --scroll-direction: bounceHorizontal-reverse;
         }
 
         .logo-item {
@@ -105,67 +148,75 @@
             justify-content: center;
             flex-shrink: 0;
             color: #fff;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease;
             cursor: pointer;
-            position: relative;
-            z-index: 1;
         }
 
         .logo-item:hover {
             transform: scale(1.2);
             background: #f0f0f0;
             color: #333;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             z-index: 2;
         }
 
         @keyframes bounceHorizontal {
-            0% { transform: translateX(-10%); }
-            100% { transform: translateX(calc(-100% + 100vw)); }
+            from { transform: translateX(-10%); }
+            to { transform: translateX(calc(-100% + 100vw)); }
+        }
+
+        @keyframes bounceHorizontal-reverse {
+            from { transform: translateX(calc(-100% + 100vw)); }
+            to { transform: translateX(-10%); }
         }
 
         .section-3 {
             padding: 20px;
             min-height: 550px;
             border: 2px dashed #ccc;
-            margin: 0px;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        /* Responsive adjustments while maintaining positioning */
+        @media (max-width: 768px) {
+            .section-2 {
+                min-height: 600px; /* Increased to accommodate absolute positioning */
+            }
+            
+            .project-card {
+                width: 130px; /* Slightly smaller on mobile */
+                height: 155px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-card {
+                width: 110px; /* Even smaller on very small screens */
+                height: 135px;
+            }
         }
     </style>
 </head>
 <body>
     <section class="section-1">
         <div class="hero-content">
-            <img id="logo" alt="Logo" style="max-width: 150px; margin-bottom: 1rem;">
+            <img id="logo" alt="Oracle Engine Logo" loading="lazy" style="max-width: 150px; margin-bottom: 1rem;">
             <h1>ORACLE ENGINE</h1>
             <h1>SECTION 8</h1>
         </div>
         
         <div class="logo-scroll-wrapper">
-            <div class="logo-scroll bounce-right">
-                <div class="logo-item">Logo 1</div>
-                <div class="logo-item">Logo 2</div>
-                <div class="logo-item">Logo 3</div>
-                <div class="logo-item">Logo 4</div>
-                <div class="logo-item">Logo 5</div>
-                <div class="logo-item">Logo 6</div>
-                <div class="logo-item">Logo 7</div>
-                <div class="logo-item">Logo 8</div>
+            <div class="logo-scroll">
+                <template id="logo-template">
+                    <div class="logo-item">Logo</div>
+                </template>
             </div>
         </div>
 
         <div class="logo-scroll-wrapper">
-            <div class="logo-scroll bounce-left">
-                <div class="logo-item">Logo 9</div>
-                <div class="logo-item">Logo 10</div>
-                <div class="logo-item">Logo 11</div>
-                <div class="logo-item">Logo 12</div>
-                <div class="logo-item">Logo 13</div>
-                <div class="logo-item">Logo 14</div>
-                <div class="logo-item">Logo 15</div>
-                <div class="logo-item">Logo 16</div>
+            <div class="logo-scroll reverse">
+                <!-- Will be populated by JavaScript -->
             </div>
         </div>
     </section>
@@ -176,26 +227,54 @@
         <div class="project-card">Project 3</div>
         <div class="project-card">Project 4</div>
 
-        <img src="leaf.png" class="leaf leaf-1">
-        <img src="leaf.png" class="leaf leaf-2">
-        <img src="leaf.png" class="leaf leaf-3">
+        <img src="leaf.png" class="leaf leaf-1" alt="Decorative leaf">
+        <img src="leaf.png" class="leaf leaf-2" alt="Decorative leaf">
+        <img src="leaf.png" class="leaf leaf-3" alt="Decorative leaf">
     </section>
 
     <section class="section-3">
-        Section 3 content will go here
+        <div class="content">
+            Section 3 content will go here
+        </div>
     </section>
 
     <script>
-        fetch('src/static/assets/asset-pack.json')
-            .then(response => response.json())
-            .then(data => {
-                const logo = document.getElementById('logo');
-                const favicon = document.getElementById('favicon');
-                const logoImage = data.section1.files.find(file => file.key === 'Vel1').url;
-                logo.src = `src/static/${logoImage}`;
-                favicon.href = `src/static/${logoImage}`;
-            })
-            .catch(error => console.error('Error fetching asset-pack.json:', error));
+        document.addEventListener('DOMContentLoaded', () => {
+            // Populate logo scrollers
+            const template = document.getElementById('logo-template');
+            const scrollers = document.querySelectorAll('.logo-scroll');
+            
+            scrollers.forEach((scroller, index) => {
+                for (let i = 1; i <= 8; i++) {
+                    const clone = template.content.cloneNode(true);
+                    const logoItem = clone.querySelector('.logo-item');
+                    logoItem.textContent = `Logo ${i + (index * 8)}`;
+                    scroller.appendChild(clone);
+                }
+            });
+
+            // Load logo with error handling
+            fetch('src/static/assets/asset-pack.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(data => {
+                    const logo = document.getElementById('logo');
+                    const logoImage = data.section1.files.find(file => file.key === 'Vel1')?.url;
+                    
+                    if (logoImage) {
+                        logo.src = `src/static/${logoImage}`;
+                    } else {
+                        throw new Error('Logo image not found in asset pack');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading assets:', error);
+                    // Fallback content
+                    document.getElementById('logo').alt = 'Oracle Engine';
+                });
+        });
     </script>
 </body>
 </html>
