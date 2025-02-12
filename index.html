@@ -18,34 +18,59 @@
             color: #3D3D3D;
         }
 
-        .section-1 
-        {
-        font-family: 'Rubik Glitch', sans-serif;
-        padding: 20px;
-        background-color: #FFFAEC;
-        text-align: center;
-        overflow: hidden;
-        text-shadow: 1px 4px 4px rgba(68, 255, 0, 0.25), 
-                     4px 4px 4px rgba(255, 0, 4, 0.25), 
-                     2px 4px 4px rgba(255, 0, 217, 0.25);
+        .section-1 {
+            font-family: 'Rubik Glitch', sans-serif;
+            padding: 0px;
+            background-color: #FFFAEC;
+            text-align: center;
+            overflow: hidden;
+            text-shadow: 1px 4px 4px rgba(68, 255, 0, 0.25), 
+                         4px 4px 4px rgba(255, 0, 4, 0.25), 
+                         2px 4px 4px rgba(255, 0, 217, 0.25);
         }
 
         .section-2 {
+            position: relative;
             padding: 20px;
             background-color: #97F1F8;
             text-align: center;
-            overflow: hidden;
+            min-height: 500px;
         }
 
-        .main-logo {
+        .project-card {
             width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
-            background-color: #ddd;
+            height: 175px;
+            background: #5C7261;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            transition: transform 0.3s ease;
         }
+
+        .project-card:hover {
+            transform: scale(1.1);
+        }
+
+        /* Positioning project cards like leaves */
+        .project-card:nth-child(1) { top: 20%; left: 10%; rotate: -20deg;}
+        .project-card:nth-child(2) { top: 50%; left: 30%; rotate: 20deg;}
+        .project-card:nth-child(3) { top: 20%; right: 35%; rotate: 2.2deg;}
+        .project-card:nth-child(4) { bottom: 30%; right: 10%; rotate: -7deg;}
+
+        .leaf {
+            position: absolute;
+            width: 80px;
+        }
+
+        .leaf-1 { bottom: 20%; left: 15%; }
+        .leaf-2 { top: 20%; left: 40%; }
+        .leaf-3 { top: 5%; right: 10%; }
 
         .logo-scroll-wrapper {
             position: relative;
@@ -95,19 +120,15 @@
         }
 
         @keyframes bounceHorizontal {
-            0% {
-                transform: translateX(-10%);
-            }
-            100% {
-                transform: translateX(calc(-100% + 100vw));
-            }
+            0% { transform: translateX(-10%); }
+            100% { transform: translateX(calc(-100% + 100vw)); }
         }
 
-        .section-2, .section-3 {
+        .section-3 {
             padding: 20px;
-            min-height: 200px;
+            min-height: 550px;
             border: 2px dashed #ccc;
-            margin: 20px;
+            margin: 0px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -150,7 +171,14 @@
     </section>
 
     <section class="section-2">
-        Section 2 content will go here
+        <div class="project-card">Project 1</div>
+        <div class="project-card">Project 2</div>
+        <div class="project-card">Project 3</div>
+        <div class="project-card">Project 4</div>
+
+        <img src="leaf.png" class="leaf leaf-1">
+        <img src="leaf.png" class="leaf leaf-2">
+        <img src="leaf.png" class="leaf leaf-3">
     </section>
 
     <section class="section-3">
