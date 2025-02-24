@@ -11,10 +11,10 @@
     
     <style>
         :root {
-            --primary-color: #5C7261;
+            --primary-color: #578E7E;
             --secondary-color: #97F1F8;
             --text-color: #3D3D3D;
-            --background-color: #F5F5F5;
+            --background-color: #97F1F8;
             --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -42,30 +42,34 @@
         }
 
         .section-2 {
-            position: relative;
-            padding: 20px;
-            background-color: var(--secondary-color);
-            text-align: center;
-            min-height: 500px;
-            /* Removed grid layout to maintain exact positioning */
-        }
+        position: relative;
+        padding: 20px;
+        background-color: var(--secondary-color);
+        text-align: center;
+        min-height: 500px;
+        /* Add a container width for better control */
+        max-width: 1200px;
+        margin: 0 auto;
+        /* Ensure the container maintains aspect ratio */
+        aspect-ratio: 21/9;
+    }
 
         .project-card {
-            width: 150px;
-            height: 175px;
-            background: var(--primary-color);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: var(--card-shadow);
-            position: absolute;
-            transition: transform 0.3s ease;
-            will-change: transform;
-        }
+        width: clamp(100px, 15vw, 150px);  /* Responsive width */
+        height: clamp(125px, 17.5vw, 175px);  /* Responsive height */
+        background: var(--primary-color);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: clamp(14px, 1.5vw, 18px);  /* Responsive font size */
+        font-weight: bold;
+        box-shadow: var(--card-shadow);
+        position: absolute;
+        transition: transform 0.3s ease;
+        will-change: transform;
+    }
 
         .project-card:hover {
             transform: scale(1.1);
@@ -77,43 +81,49 @@
             left: 10%; 
             transform: rotate(-20deg);
         }
+
         .project-card:nth-child(2) { 
             top: 50%; 
             left: 30%; 
             transform: rotate(20deg);
         }
+
         .project-card:nth-child(3) { 
             top: 20%; 
             right: 35%; 
             transform: rotate(2.2deg);
         }
+
         .project-card:nth-child(4) { 
             bottom: 30%; 
             right: 10%; 
             transform: rotate(-7deg);
         }
 
-        /* Hover effect while maintaining rotation */
+        /* Hover effects with preserved rotation */
         .project-card:nth-child(1):hover { transform: scale(1.1) rotate(-20deg); }
         .project-card:nth-child(2):hover { transform: scale(1.1) rotate(20deg); }
         .project-card:nth-child(3):hover { transform: scale(1.1) rotate(2.2deg); }
         .project-card:nth-child(4):hover { transform: scale(1.1) rotate(-7deg); }
 
-        /* Exact leaf positioning */
+        /* Leaf styles */
         .leaf {
             position: absolute;
-            width: 80px;
-            height: 80px;
+            width: clamp(40px, 8vw, 80px);  /* Responsive width */
+            height: auto;  /* Maintain aspect ratio */
+            object-fit: contain;
         }
 
         .leaf-1 { 
             bottom: 20%; 
             left: 15%; 
         }
+
         .leaf-2 { 
             top: 20%; 
             left: 40%; 
         }
+
         .leaf-3 { 
             top: 5%; 
             right: 10%; 
@@ -180,20 +190,73 @@
 
         /* Responsive adjustments while maintaining positioning */
         @media (max-width: 768px) {
-            .section-2 {
-                min-height: 600px; /* Increased to accommodate absolute positioning */
+                    .section-2 {
+                aspect-ratio: 4/5;  /* Taller container on mobile */
+                padding: 40px 20px;
             }
             
-            .project-card {
-                width: 130px; /* Slightly smaller on mobile */
-                height: 155px;
+            /* Adjust positions for better mobile layout */
+            .project-card:nth-child(1) { 
+                top: 15%; 
+                left: 5%; 
+            }
+            
+            .project-card:nth-child(2) { 
+                top: 40%; 
+                left: 25%; 
+            }
+            
+            .project-card:nth-child(3) { 
+                top: 65%; 
+                right: 25%; 
+            }
+            
+            .project-card:nth-child(4) { 
+                bottom: 15%; 
+                right: 5%; 
             }
         }
 
         @media (max-width: 480px) {
-            .project-card {
-                width: 110px; /* Even smaller on very small screens */
-                height: 135px;
+            .section-2 {
+                aspect-ratio: 2/3;  /* Even taller container on small mobile */
+            }
+            
+            /* Further position adjustments for very small screens */
+            .project-card:nth-child(1) { 
+                top: 10%; 
+                left: 5%; 
+            }
+            
+            .project-card:nth-child(2) { 
+                top: 35%; 
+                left: 20%; 
+            }
+            
+            .project-card:nth-child(3) { 
+                top: 60%; 
+                right: 20%; 
+            }
+            
+            .project-card:nth-child(4) { 
+                bottom: 10%; 
+                right: 5%; 
+            }
+            
+            /* Adjust leaf positions for mobile */
+            .leaf-1 { 
+                bottom: 15%; 
+                left: 10%; 
+            }
+            
+            .leaf-2 { 
+                top: 25%; 
+                left: 35%; 
+            }
+            
+            .leaf-3 { 
+                top: 8%; 
+                right: 8%; 
             }
         }
     </style>
